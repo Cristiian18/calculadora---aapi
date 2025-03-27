@@ -1,0 +1,49 @@
+# Documentación del Proyecto Calculadora API
+
+## Información General
+- **Nombre del Proyecto**: Calculadora API
+- **Autor**: Cristian Camilo Osorio Mujica
+- - **Versión**: 1.0
+
+## Descripción del Proyecto
+Esta API REST implementa operaciones básicas de una calculadora (suma, resta, multiplicación y división) a través de endpoints HTTP.
+
+## Estructura del Proyecto
+- **Controller**: Maneja las peticiones HTTP y devuelve las respuestas.
+- **Service**: Contiene la lógica de negocio para realizar las operaciones matemáticas.
+- **Test**: Pruebas unitarias y de integración para verificar el correcto funcionamiento.
+
+## Endpoints Disponibles
+| Operación | Endpoint | Parámetros | Ejemplo |
+|-----------|----------|------------|---------|
+| Suma | `/sumar` | a, b | `/sumar?a=5&b=3` |
+| Resta | `/restar` | a, b | `/restar?a=5&b=3` |
+| Multiplicación | `/multiplicar` | a, b | `/multiplicar?a=5&b=3` |
+| División | `/dividir` | a, b | `/dividir?a=6&b=2` |
+
+## Manejo de Errores
+- División por cero: Retorna un error 400 (Bad Request) con un mensaje explicativo.
+- Parámetros inválidos: Retorna un error 400 (Bad Request) cuando los parámetros no son números válidos.
+
+## Pruebas
+Se han implementado pruebas unitarias y de integración para verificar:
+- Funcionamiento correcto de los endpoints
+- Manejo adecuado de errores
+- Validación de parámetros
+
+
+
+### Error 1: Fallo en la prueba de división por cero
+**Descripción**: La prueba de integración para el caso de división por cero falló porque el controlador no estaba manejando correctamente este caso especial.
+**Solución**: Se modificó el controlador para verificar explícitamente si el divisor es cero antes de intentar realizar la operación, devolviendo un código de estado HTTP 400 (Bad Request) con un mensaje de error apropiado.
+
+## Instrucciones de Ejecución
+1. Clonar el repositorio
+3. Iniciar la aplicación con `mvn spring-boot:run`
+4. Acceder a los endpoints a través de `http://localhost:8080/[endpoint]`
+
+## Tecnologías Utilizadas
+- Spring Boot
+- JUnit 5
+- MockMvc para pruebas de integración
+- Maven para gestión de dependencias
